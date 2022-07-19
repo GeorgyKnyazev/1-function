@@ -13,7 +13,6 @@ namespace _1_function
 
             bool continueProgram = true;
             int userInput;
-            string nameForSearch;
 
             while(continueProgram == true)
             {
