@@ -6,11 +6,10 @@ namespace _1_function
     {
         static void Main(string[] args)
         {
-            string[] postMassiv = new string[0];
-            string[] surNameMassiv = new string[0];
+            string[] postClient = new string[0];
+            string[] surNameClient = new string[0];
             string post = " ";
             string surName = " ";
-
             bool continueProgram = true;
             int userInput;
 
@@ -24,21 +23,20 @@ namespace _1_function
                 Console.WriteLine("5 - Выход");
 
                 userInput = Convert.ToInt32(Console.ReadLine());
-                //Console.Clear();
                 
                 switch (userInput)
                 {
                     case 1:
-                        AddDossier(ref surNameMassiv, ref postMassiv, surName, post);
+                        AddDossier(ref surNameClient, ref postClient, surName, post);
                         break;
                     case 2:
-                        OutputMassiv(surNameMassiv, postMassiv);
+                        OutputMassiv(surNameClient, postClient);
                         break;
                     case 3:
-                        DeliteDossier(ref surNameMassiv, ref postMassiv, userInput);
+                        DeliteDossier(ref surNameClient, ref postClient, userInput);
                         break;
                     case 4:
-                        SearshResult(surName, surNameMassiv);
+                        SearshResult(surName, surNameClient);
                         break;
                     case 5:
                         continueProgram = false;
@@ -46,7 +44,6 @@ namespace _1_function
                 }
             }           
         }
-
         static void AddDossier(ref string[] massiv1, ref string[] massiv2, string surName, string post)
         {
             Console.Write("Введите фамилию: ");
@@ -58,7 +55,6 @@ namespace _1_function
             massiv2 = WriteInMassiv(massiv2, post);
             Console.Clear();
         }
-        
         static string[]  WriteInMassiv(string[] massiv, string variable)
         {
             string[] tempMassiv = new string[massiv.Length + 1];
@@ -69,7 +65,6 @@ namespace _1_function
             tempMassiv[tempMassiv.Length - 1] = variable;
             return tempMassiv;
         }
-        
         static void OutputMassiv(string[] massiv1, string[] massiv2)
         {
             Console.SetCursorPosition(0, 15);
@@ -78,7 +73,6 @@ namespace _1_function
                 Console.WriteLine((i + 1) + " " + massiv1[i] + " " + massiv2[i]);
             }
         }
-        
         static void DeliteDossier(ref string[] massiv1, ref string[] massiv2, int userInput)
         {
             Console.Write("Введите номер досье для удаления: ");
@@ -88,7 +82,6 @@ namespace _1_function
             massiv2 = DeliteInMassiv(massiv2, userInput);
             Console.Clear();
         }
-        
         static string[] DeliteInMassiv(string[] massiv, int userInput)
         {
             int index = 0;
