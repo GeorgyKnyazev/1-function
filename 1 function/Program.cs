@@ -44,72 +44,83 @@ namespace _1_function
                 }
             }           
         }
-        static void AddDossier(ref string[] massiv1, ref string[] massiv2, string surName, string post)
+
+        static void AddDossier(ref string[] array1, ref string[] array2, string variable1, string variable2)
         {
             Console.Write("Введите фамилию: ");
-            surName = Console.ReadLine();
+            variable1 = Console.ReadLine();
             Console.Write("Введите должность: ");
-            post = Console.ReadLine();
+            variable2 = Console.ReadLine();
 
-            massiv1 = WriteInMassiv(massiv1, surName);
-            massiv2 = WriteInMassiv(massiv2, post);
+            array1 = WriteInMassiv(array1, variable1);
+            array2 = WriteInMassiv(array2, variable2);
             Console.Clear();
         }
-        static string[]  WriteInMassiv(string[] massiv, string variable)
+
+        static string[]  WriteInMassiv(string[] array, string variable)
         {
-            string[] tempMassiv = new string[massiv.Length + 1];
-            for (int i = 0; i < massiv.Length; i++)
+            string[] tempArray = new string[array.Length + 1];
+
+            for (int i = 0; i < array.Length; i++)
             {
-                tempMassiv[i] = massiv[i];
+                tempArray[i] = array[i];
             }
-            tempMassiv[tempMassiv.Length - 1] = variable;
-            return tempMassiv;
+            
+            tempArray[tempArray.Length - 1] = variable;
+            return tempArray;
         }
-        static void OutputMassiv(string[] massiv1, string[] massiv2)
+
+        static void OutputMassiv(string[] array1, string[] array2)
         {
             Console.SetCursorPosition(0, 15);
-            for (int i = 0; i < massiv1.Length; i++)
+
+            for (int i = 0; i < array1.Length; i++)
             {
-                Console.WriteLine((i + 1) + " " + massiv1[i] + " " + massiv2[i]);
+                Console.WriteLine((i + 1) + " " + array1[i] + " " + array2[i]);
             }
         }
-        static void DeliteDossier(ref string[] massiv1, ref string[] massiv2, int userInput)
+
+        static void DeliteDossier(ref string[] array1, ref string[] array2, int variable)
         {
             Console.Write("Введите номер досье для удаления: ");
-            userInput = Convert.ToInt32(Console.ReadLine());
+            variable = Convert.ToInt32(Console.ReadLine());
 
-            massiv1 = DeliteInMassiv(massiv1, userInput);
-            massiv2 = DeliteInMassiv(massiv2, userInput);
+            array1 = DeliteInMassiv(array1, variable);
+            array2 = DeliteInMassiv(array2, variable);
+            
             Console.Clear();
         }
-        static string[] DeliteInMassiv(string[] massiv, int userInput)
+
+        static string[] DeliteInMassiv(string[] array, int veriable)
         {
             int index = 0;
-            string[] tempMassiv = new string[massiv.Length - 1];
-            for (int i = 0; i < tempMassiv.Length; i++)
+            string[] tempArray = new string[array.Length - 1];
+
+            for (int i = 0; i < tempArray.Length; i++)
             {
-                if (index != (userInput - 1))
+                if (index != (veriable - 1))
                 {
-                    tempMassiv[i] = massiv[index];
+                    tempArray[i] = array[index];
                     index++;
                 }
                 else
                 {
                     index++;
-                    tempMassiv[i] = massiv[index];
+                    tempArray[i] = array[index];
                 }
             }
-            return tempMassiv;
+            return tempArray;
         }
-        static void SearshResult(string name, string[] massiv)
+
+        static void SearshResult(string variable, string[] array)
         {
             Console.Write("Введите фамилию для поиска: ");
-            name = Console.ReadLine();
+            variable = Console.ReadLine();
             Console.Write("Дааная фамилия встречаеться в следующих досье: ");
 
-            for (int i = 0; i < massiv.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (massiv[i].ToLower() == name.ToLower())
+                if (array[i].ToLower() == variable.ToLower())
                 {
                     Console.Write((i+1) + " ");
                 }
