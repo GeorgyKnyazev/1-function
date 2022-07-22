@@ -116,7 +116,7 @@ namespace _1_function
         {
             Console.Write("Введите фамилию для поиска: ");
             variable = Console.ReadLine();
-            Console.Write("Дааная фамилия встречаеться в следующих досье: ");
+            Console.WriteLine($"Фамилия {variable} встречаеться в следующих досье: ");
 
             for (int i = 0; i < array1.Length; i++)
             {
