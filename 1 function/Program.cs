@@ -30,13 +30,13 @@ namespace _1_function
                         AddDossier(ref surNameClient, ref postClient, surName, post);
                         break;
                     case 2:
-                        OutputMassiv(surNameClient, postClient);
+                        OutputAllDosiers(surNameClient, postClient);
                         break;
                     case 3:
                         DeliteDossier(ref surNameClient, ref postClient, userInput);
                         break;
                     case 4:
-                        SearshResult(surName, surNameClient);
+                        SearshDossier(surName, surNameClient, postClient);
                         break;
                     case 5:
                         continueProgram = false;
@@ -70,7 +70,7 @@ namespace _1_function
             return tempArray;
         }
 
-        static void OutputMassiv(string[] array1, string[] array2)
+        static void OutputAllDosiers(string[] array1, string[] array2)
         {
             Console.SetCursorPosition(0, 15);
 
@@ -112,17 +112,17 @@ namespace _1_function
             return tempArray;
         }
 
-        static void SearshResult(string variable, string[] array)
+        static void SearshDossier(string variable, string[] array1, string[] array2)
         {
             Console.Write("Введите фамилию для поиска: ");
             variable = Console.ReadLine();
             Console.Write("Дааная фамилия встречаеться в следующих досье: ");
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array1.Length; i++)
             {
-                if (array[i].ToLower() == variable.ToLower())
+                if (array1[i].ToLower() == variable.ToLower())
                 {
-                    Console.Write((i+1) + " ");
+                    Console.WriteLine((i+1) + " " + array1[i] + " - " + array2[i]);
                 }
             }
         }
