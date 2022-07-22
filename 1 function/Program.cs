@@ -8,12 +8,10 @@ namespace _1_function
         {
             string[] postClient = new string[0];
             string[] surNameClient = new string[0];
-            string post = " ";
-            string surName = " ";
-            bool continueProgram = true;
+            bool isProgramContinuing = true;
             int userInput;
 
-            while(continueProgram == true)
+            while(isProgramContinuing == true)
             {
                 Console.SetCursorPosition(0,0);
                 Console.WriteLine("1 - Добавить досье");
@@ -27,7 +25,7 @@ namespace _1_function
                 switch (userInput)
                 {
                     case 1:
-                        AddDossier(ref surNameClient, ref postClient, surName, post);
+                        AddDossier(ref surNameClient, ref postClient);
                         break;
                     case 2:
                         OutputAllDosiers(surNameClient, postClient);
@@ -36,28 +34,30 @@ namespace _1_function
                         DeliteDossier(ref surNameClient, ref postClient, userInput);
                         break;
                     case 4:
-                        SearshDossier(surName, surNameClient, postClient);
+                        SearshSurname(surNameClient, postClient);
                         break;
                     case 5:
-                        continueProgram = false;
+                        isProgramContinuing = false;
                         break;
                 }
             }           
         }
 
-        static void AddDossier(ref string[] array1, ref string[] array2, string variable1, string variable2)
+        static void AddDossier(ref string[] array1, ref string[] array2)
         {
+            string post = " ";
+            string surName = " ";
             Console.Write("Введите фамилию: ");
-            variable1 = Console.ReadLine();
+            surName = Console.ReadLine();
             Console.Write("Введите должность: ");
-            variable2 = Console.ReadLine();
+            post = Console.ReadLine();
 
-            array1 = WriteInMassiv(array1, variable1);
-            array2 = WriteInMassiv(array2, variable2);
+            array1 = WriteInArray(array1, surName);
+            array2 = WriteInArray(array2, post);
             Console.Clear();
         }
 
-        static string[]  WriteInMassiv(string[] array, string variable)
+        static string[]  WriteInArray(string[] array, string variable)
         {
             string[] tempArray = new string[array.Length + 1];
 
@@ -85,13 +85,13 @@ namespace _1_function
             Console.Write("Введите номер досье для удаления: ");
             variable = Convert.ToInt32(Console.ReadLine());
 
-            array1 = DeliteInMassiv(array1, variable);
-            array2 = DeliteInMassiv(array2, variable);
+            array1 = DeliteInArray(array1, variable);
+            array2 = DeliteInArray(array2, variable);
             
             Console.Clear();
         }
 
-        static string[] DeliteInMassiv(string[] array, int veriable)
+        static string[] DeliteInArray(string[] array, int veriable)
         {
             int index = 0;
             string[] tempArray = new string[array.Length - 1];
@@ -112,15 +112,15 @@ namespace _1_function
             return tempArray;
         }
 
-        static void SearshDossier(string variable, string[] array1, string[] array2)
+        static void SearshSurname(string[] array1, string[] array2)
         {
             Console.Write("Введите фамилию для поиска: ");
-            variable = Console.ReadLine();
-            Console.WriteLine($"Фамилия {variable} встречаеться в следующих досье: ");
+            string surname = Console.ReadLine();
+            Console.WriteLine($"Фамилия {surname} встречаеться в следующих досье: ");
 
             for (int i = 0; i < array1.Length; i++)
             {
-                if (array1[i].ToLower() == variable.ToLower())
+                if (array1[i].ToLower() == surname.ToLower())
                 {
                     Console.WriteLine((i+1) + " " + array1[i] + " - " + array2[i]);
                 }
